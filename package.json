@@ -1,0 +1,24 @@
+{
+  "name": "testcasemgmt",
+  "version": "0.0.1",
+  "description": "Yet another test case management tool",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lemgrb/testcasemgmt.git"
+  },
+  "keywords": [
+    "testing",
+    "test",
+    "management"
+  ],
+  "author": "Lemuel Bulangis",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/lemgrb/testcasemgmt/issues"
+  },
+  "homepage": "https://github.com/lemgrb/testcasemgmt#readme"
+}
