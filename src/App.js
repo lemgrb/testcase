@@ -1,15 +1,18 @@
-import React, {useState}  from 'react'
+import React, {useState, useEffect}  from 'react'
 import Project from './components/Project'
 import { Outlet, Link } from "react-router-dom"
-import faker from 'faker'
+import axios from 'axios'
+import regeneratorRuntime from "regenerator-runtime";
 
 const App = (props) => {
 
     const [projects, setProjects] = useState([]);
- 
-    const handleAddProject = (e) => {
-        setProjects([{code:"GOAL-21", id:faker.datatype.uuid(),name:faker.lorem.word()},...projects])
-    }
+
+    // https://github.com/babel/babel/issues/9849
+    useEffect(async () => {
+        const resp = await axios.get('https://crudcrud.com/api/00096251d82c462eaadb9bac8c17087b/projects');
+        setProjects(resp.data);
+    },[]);
 
     return(
         <div className="grid gap-4 md:grid-cols-2">
@@ -24,7 +27,7 @@ const App = (props) => {
                 }
             </div>
             <aside>
-                <Outlet onSubmit={handleAddProject} />
+                <Outlet/>
             </aside>
         </div>
     )
