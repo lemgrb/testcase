@@ -10,13 +10,14 @@ const ProjectAdd = (props) => {
     // TODO: Use ReactForm
     const [projectName, setProjectName] = useState(""); 
     const [projectDescription, setProjectDescription] = useState("");
+    const [success, setSuccess] = useState(false);
 
     const handleAddProject = async (e) => {
         e.preventDefault();
         let payload = {name:projectName, description:projectDescription};
         try {
             const resp = await axios.post('https://crudcrud.com/api/00096251d82c462eaadb9bac8c17087b/projects', payload);
-            navigate("/");
+            setSuccess(projectName + " has been added. Please click 'Refresh' on the left");
         } catch (e) {
             setError(e.message);
         }
@@ -37,6 +38,11 @@ const ProjectAdd = (props) => {
                 {
                     error?<span className="text-red-500">{error}</span>:""
                 }
+                {
+                    success?<div><span className="text-green-500">{success}</span> <button className="btn border border-gray-900 bg-yellow-300" onClick={()=>navigate("/")}>Close</button></div>:""
+                }
+                {
+                !success?
                 <form method="POST" onSubmit={handleAddProject}>
                     <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
                     <div className="grid grid-cols-3 gap-6">
@@ -63,7 +69,8 @@ const ProjectAdd = (props) => {
                         </div>
                     </div>
                 </div>
-                </form>
+                </form>:""
+                }
             </div>
     )
 }
