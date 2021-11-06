@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 .btn {
-    @apply rounded-full py-1 px-2 text-xs font-bold cursor-pointer;
+    @apply rounded-full py-1 px-2 m-1 text-xs font-bold cursor-pointer;
 }
