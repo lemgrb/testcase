@@ -1,4 +1,5 @@
 # testcase
+![example workflow](https://github.com/lemgrb/testcasemgmt/actions/workflows/node.js.yml/badge.svg)
 Test Case Management tool (to reinvent the wheel because I have no other idea)
 
 ## Kanban
