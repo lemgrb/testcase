@@ -1,6 +1,5 @@
 import React, {useState, useContext} from 'react'
 import { Link, useNavigate } from "react-router-dom"
-import faker from 'faker'
 import axios from 'axios'
 import {RefreshProjectContext} from '../components/RefreshProjectContext'
 
