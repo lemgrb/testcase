@@ -7,7 +7,9 @@
     "start": "webpack --mode=development",
     "build": "webpack --mode=production",
     "dev": "webpack serve --mode=development",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
@@ -28,6 +30,12 @@
     "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.16.0",
     "@babel/preset-react": "^7.16.0",
+    "@storybook/addon-actions": "^6.3.12",
+    "@storybook/addon-essentials": "^6.3.12",
+    "@storybook/addon-links": "^6.3.12",
+    "@storybook/builder-webpack5": "^6.3.12",
+    "@storybook/manager-webpack5": "^6.3.12",
+    "@storybook/react": "^6.3.12",
     "babel-loader": "^8.2.3",
     "css-loader": "^6.5.1",
     "postcss": "^8.3.11",
@@ -39,6 +47,7 @@
     "webpack-dev-server": "^4.4.0"
   },
   "dependencies": {
+    "@storybook/addon-postcss": "^2.0.0",
     "axios": "^0.24.0",
     "history": "^5.1.0",
     "react": "^17.0.2",
