@@ -1,7 +1,8 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import { Link, useNavigate } from "react-router-dom"
 import faker from 'faker'
 import axios from 'axios'
+import {RefreshProjectContext} from '../components/RefreshProjectContext'
 
 const ProjectAdd = (props) => {
 
@@ -11,13 +12,15 @@ const ProjectAdd = (props) => {
     const [projectName, setProjectName] = useState(""); 
     const [projectDescription, setProjectDescription] = useState("");
     const [success, setSuccess] = useState(false);
+    const triggerRefresh = useContext(RefreshProjectContext)
 
     const handleAddProject = async (e) => {
         e.preventDefault();
         let payload = {name:projectName, description:projectDescription};
         try {
-            const resp = await axios.post('https://crudcrud.com/api/00096251d82c462eaadb9bac8c17087b/projects', payload);
+            const resp = await axios.post(`${process.env.REACT_APP_ENDPOINT}/projects`, payload);
             setSuccess(projectName + " has been added. Please click 'Refresh' on the left");
+            triggerRefresh();
         } catch (e) {
             setError(e.message);
         }

@@ -3,6 +3,7 @@ import Project from './components/Project'
 import { Outlet, Link } from "react-router-dom"
 import axios from 'axios'
 import regeneratorRuntime from "regenerator-runtime";
+import {RefreshProjectContext} from './components/RefreshProjectContext'
 
 const App = (props) => {
 
@@ -10,11 +11,14 @@ const App = (props) => {
     // TODO: This is a bandaid solution
     const [refresh, setRefresh] = useState(false);
 
+    const triggerRefresh = () => {
+        setRefresh(!refresh);
+    }
+
     // https://github.com/babel/babel/issues/9849
     useEffect(async () => {
-        const resp = await axios.get('https://crudcrud.com/api/00096251d82c462eaadb9bac8c17087b/projects');
+        const resp = await axios.get(`${process.env.REACT_APP_ENDPOINT}/projects`);
         setProjects(resp.data);
-        setRefresh(false)
     },[refresh]);
 
     return(
@@ -30,7 +34,9 @@ const App = (props) => {
                 }
             </div>
             <aside>
-                <Outlet/>
+                <RefreshProjectContext.Provider value={triggerRefresh}>
+                    <Outlet/>
+                </RefreshProjectContext.Provider>
             </aside>
         </div>
     )
