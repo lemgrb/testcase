@@ -7,7 +7,7 @@
     "start": "webpack --mode=development",
     "build": "webpack --mode=production",
     "dev": "webpack serve --mode=development",
-    "test": "jest",
+    "test": "npx cypress run",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -39,6 +39,7 @@
     "@testing-library/react": "^12.1.2",
     "babel-loader": "^8.2.3",
     "css-loader": "^6.5.1",
+    "cypress": "^8.7.0",
     "postcss": "^8.3.11",
     "postcss-loader": "^6.2.0",
     "style-loader": "^3.3.1",

@@ -28,4 +28,9 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run build --if-present
-    - run: npm test
+    - name: Create env file
+        run: |
+          touch .env
+          echo REACT_APP_ENDPOINT=https://crudcrud.com/api/8966640bb3594b67b94d875c8058625a >> .env
+    - run: npm run dev & npm test
+    - run: killall node
