@@ -25,7 +25,7 @@ const App = (props) => {
         <div className="grid gap-4 md:grid-cols-2">
             <div>
                 <h1 className="text-xl">/testcases</h1>
-                <nav><Link to="/project/add" className="btn border border-gray-900 bg-yellow-300">Add project</Link><a className="btn border border-gray-900 bg-yellow-300" onClick={()=>setRefresh(true)}>Refresh</a></nav>
+                <nav><Link to="/project/add" data-testid="add-project-button-from-home" className="btn border border-gray-900 bg-yellow-300">Add project</Link><a className="btn border border-gray-900 bg-yellow-300" onClick={()=>setRefresh(true)}>Refresh</a></nav>
                 <h2 className="text-base font-bold">My projects</h2>
                 {
                     projects.map(project => (

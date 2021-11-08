@@ -18,7 +18,7 @@ const ProjectAdd = (props) => {
         let payload = {name:projectName, description:projectDescription};
         try {
             const resp = await axios.post(`${process.env.REACT_APP_ENDPOINT}/projects`, payload);
-            setSuccess(projectName + " has been added. Please click 'Refresh' on the left");
+            setSuccess(projectName + " added.");
             triggerRefresh();
         } catch (e) {
             setError(e.message);
@@ -41,7 +41,7 @@ const ProjectAdd = (props) => {
                     error?<span className="text-red-500">{error}</span>:""
                 }
                 {
-                    success?<div><span className="text-green-500">{success}</span> <button className="btn border border-gray-900 bg-yellow-300" onClick={()=>navigate("/")}>Close</button></div>:""
+                    success?<div data-testid="add-project-confirmation"><span className="text-green-500">{success}</span> <button data-testid="add-project-close-button" className="btn border border-gray-900 bg-yellow-300" onClick={()=>navigate("/")}>Close</button></div>:""
                 }
                 {
                 !success?
@@ -53,7 +53,7 @@ const ProjectAdd = (props) => {
                                 Name<span className="text-red-500">*</span>
                             </label>
                             <div className="mt-1 flex rounded-md shadow-sm">
-                                <input type="text" onChange={handleNameChange} name="project_name" id="project_name" className="focus:ring-green-500 focus:border-green-500 flex-1 block w-full rounded-sm text-sm border-gray-300" placeholder="System Test for Product A" maxLength="256" required/>
+                                <input data-testid="add-project-name-input" type="text" onChange={handleNameChange} name="project_name" id="project_name" className="focus:ring-green-500 focus:border-green-500 flex-1 block w-full rounded-sm text-sm border-gray-300" placeholder="System Test for Product A" maxLength="256" required/>
                             </div>
                         </div>
                         <div className="col-span-3 sm:col-span-2">
@@ -61,13 +61,13 @@ const ProjectAdd = (props) => {
                                 Description
                             </label>
                             <div className="mt-1 flex rounded-md shadow-sm">
-                                <textarea onChange={handleDescriptionChange} maxLength="1024" className="w-full text-sm" name="project_description" placeholder="Enter project description">
+                                <textarea data-testid="add-project-description-input" onChange={handleDescriptionChange} maxLength="1024" className="w-full text-sm" name="project_description" placeholder="Enter project description">
                                 </textarea>
                             </div>
                         </div>
                         <div className="col-span-3 sm:col-span-2">    
                             <Link to="/" className="btn border border-gray-500">Cancel</Link>
-                            <button className="btn border border-gray-900 bg-yellow-300">Save</button>
+                            <button data-testid="add-project-button" className="btn border border-gray-900 bg-yellow-300">Save</button>
                         </div>
                     </div>
                 </div>
