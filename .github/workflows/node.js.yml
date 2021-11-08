@@ -27,10 +27,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
+    - run: touch .env
+    - run: echo "REACT_APP_ENDPOINT=https://crudcrud.com/api/8966640bb3594b67b94d875c8058625a" > .env
     - run: npm run build --if-present
-    - name: Create env file
-      run:
-        touch .env
-        echo REACT_APP_ENDPOINT=https://crudcrud.com/api/8966640bb3594b67b94d875c8058625a >> .env
     - run: npm run dev & npm test
     - run: killall node
